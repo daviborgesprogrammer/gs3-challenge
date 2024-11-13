@@ -1,4 +1,7 @@
-![image](assets/readme/logo_gs3.png)
+<a href="https://gs3tecnologia.com.br">
+    <img src="assets/readme/logo_gs3.png" width="240px">
+</a>
+
 # Desafio GS3 Tecnologia (Flutter)
 
 <u>**Tecnologias obrigatórias**</u>
