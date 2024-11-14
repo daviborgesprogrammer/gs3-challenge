@@ -5,7 +5,7 @@
 # Desafio GS3 Tecnologia (Flutter)
 
 <u>**Tecnologias obrigatórias**</u>
-- [x] Flutter
+- Flutter
 
 <u>**Requisitos**</u>
 - Reproduzir a tela do protótipo do [Figma](https://www.figma.com/design/6zpyt0P3vGB4pey9LxYUXO/DESAFIO?node-id=0-54&node-type=frame&t=jrIohrpbsJIvnnc0-0), de maneira funcional, ou seja, implementando todo o

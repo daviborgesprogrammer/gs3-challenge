@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/ui/styles/colors_app.dart';
+import 'core/ui/styles/text_styles.dart';
 import 'pages/home/home_page.dart';
 
 class Gs3App extends StatelessWidget {
@@ -16,6 +17,7 @@ class Gs3App extends StatelessWidget {
           seedColor: ColorsApp.i.primary,
           primary: ColorsApp.i.primary,
         ),
+        fontFamily: context.textStyles.fontFamily,
         useMaterial3: false,
       ),
       home: const HomePage(),
