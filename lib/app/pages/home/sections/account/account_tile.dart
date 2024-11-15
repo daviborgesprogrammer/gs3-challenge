@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../core/constants/image_const.dart';
-import '../../../core/ui/styles/text_styles.dart';
+import '../../../../core/constants/image_const.dart';
+import '../../../../core/ui/styles/text_styles.dart';
+import 'secret_dots.dart';
 
 class AccountTile extends StatelessWidget {
   const AccountTile({super.key});
@@ -42,7 +43,7 @@ class AccountTile extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              secretDots(),
+                              const SecretDots(),
                               Padding(
                                 padding: const EdgeInsets.only(left: 6.12),
                                 child: Text(
@@ -67,9 +68,10 @@ class AccountTile extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 14.51),
-          const Divider(height: 1, color: Color(0XFF3660A1)),
-          const SizedBox(height: 6.49),
+          const Padding(
+            padding: EdgeInsets.only(top: 14.51, bottom: 6.49),
+            child: Divider(height: 1, color: Color(0XFF3660A1), thickness: 1.0),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13),
             child: Row(
@@ -114,34 +116,4 @@ class AccountTile extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget secretDots() {
-  return const Row(
-    children: [
-      Icon(
-        Icons.circle,
-        color: Colors.white,
-        size: 6.25,
-      ),
-      SizedBox(width: 2.79),
-      Icon(
-        Icons.circle,
-        color: Colors.white,
-        size: 6.25,
-      ),
-      SizedBox(width: 2.79),
-      Icon(
-        Icons.circle,
-        color: Colors.white,
-        size: 6.25,
-      ),
-      SizedBox(width: 2.79),
-      Icon(
-        Icons.circle,
-        color: Colors.white,
-        size: 6.25,
-      ),
-    ],
-  );
 }

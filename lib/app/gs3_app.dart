@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/ui/styles/colors_app.dart';
 import 'core/ui/styles/text_styles.dart';
-import 'pages/home/home_page.dart';
+import 'pages/base/base_page.dart';
 
 class Gs3App extends StatelessWidget {
   const Gs3App({super.key});
@@ -20,7 +20,7 @@ class Gs3App extends StatelessWidget {
         fontFamily: context.textStyles.fontFamily,
         useMaterial3: false,
       ),
-      home: const HomePage(),
+      home: BasePage(),
     );
   }
 }
