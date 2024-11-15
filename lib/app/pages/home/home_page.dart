@@ -25,7 +25,6 @@ class HomePage extends StatelessWidget {
               DividerSection(),
               MyFavoriteSection(),
               DividerSection(),
-              // Expanded(child: LatestReleaseList())
               Expanded(child: LatestReleasesSection()),
             ],
           ),

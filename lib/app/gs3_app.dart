@@ -20,7 +20,7 @@ class Gs3App extends StatelessWidget {
         fontFamily: context.textStyles.fontFamily,
         useMaterial3: false,
       ),
-      home: BasePage(),
+      home: const BasePage(),
     );
   }
 }
