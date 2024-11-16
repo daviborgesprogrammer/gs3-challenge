@@ -2,22 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/constants/image_const.dart';
+import '../../../../core/extensions/formatter_extensions.dart';
+import '../../../../core/ui/styles/colors_app.dart';
 import '../../../../core/ui/styles/text_styles.dart';
+import '../../../../models/account.dart';
 import 'secret_dots.dart';
 
-class AccountTile extends StatelessWidget {
-  const AccountTile({super.key});
+class AccountTile extends StatefulWidget {
+  final Account account;
+  final bool isLast;
+  const AccountTile({super.key, required this.account, required this.isLast});
+
+  @override
+  State<AccountTile> createState() => _AccountTileState();
+}
+
+class _AccountTileState extends State<AccountTile> {
+  ValueNotifier<bool> showNumber = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 301,
+      margin: EdgeInsets.only(right: widget.isLast ? 0 : 15.0),
       padding: const EdgeInsets.symmetric(vertical: 13),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
-          colors: [Color(0XFF2B66BC), Color(0XFF132D55)],
+          colors: [
+            widget.account.colorsCard?.begin?.hexToColor ??
+                Colors.grey.shade400,
+            widget.account.colorsCard?.end?.hexToColor ?? Colors.grey.shade700,
+          ],
         ),
         borderRadius: BorderRadius.circular(12),
       ),
@@ -34,28 +51,43 @@ class AccountTile extends StatelessWidget {
                     Container(
                       height: 56,
                       width: 88,
-                      color: const Color(0XFFD9D9D9),
+                      color: ColorsApp.i.grey1,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            children: [
-                              const SecretDots(),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 6.12),
-                                child: Text(
-                                  '5621',
-                                  style: context.textStyles.textRegular
-                                      .copyWith(color: Colors.white),
-                                ),
+                          ValueListenableBuilder(
+                            valueListenable: showNumber,
+                            builder: (_, show, __) => Visibility(
+                              visible: show,
+                              replacement: Row(
+                                children: [
+                                  const SecretDots(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 6.12),
+                                    child: Text(
+                                      widget.account.number?.substring(
+                                            widget.account.number!.length - 4,
+                                            widget.account.number!.length,
+                                          ) ??
+                                          '',
+                                      style: context.textStyles.textRegular
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                              child: Text(
+                                widget.account.number ?? '',
+                                style: context.textStyles.textRegular
+                                    .copyWith(color: Colors.white),
+                              ),
+                            ),
                           ),
                           Text(
-                            'GS3 TEC',
+                            widget.account.name ?? '',
                             style: context.textStyles.textRegular
                                 .copyWith(fontSize: 14, color: Colors.white),
                           ),
@@ -64,13 +96,22 @@ class AccountTile extends StatelessWidget {
                     ),
                   ],
                 ),
-                SvgPicture.asset(ImageConst.eye),
+                GestureDetector(
+                  onTap: () {
+                    showNumber.value = !showNumber.value;
+                  },
+                  child: SvgPicture.asset(ImageConst.eye),
+                ),
               ],
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 14.51, bottom: 6.49),
-            child: Divider(height: 1, color: Color(0XFF3660A1), thickness: 1.0),
+          Padding(
+            padding: const EdgeInsets.only(top: 14.51, bottom: 6.49),
+            child: Divider(
+              height: 1,
+              color: widget.account.colorsCard!.line!.hexToColor,
+              thickness: 1.0,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13),
@@ -87,7 +128,7 @@ class AccountTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'R\$ 7.867,80',
+                      widget.account.limit!.currencyPTBR,
                       style: context.textStyles.textBold
                           .copyWith(color: Colors.white, fontSize: 16),
                     ),
@@ -103,7 +144,7 @@ class AccountTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '20',
+                      '${widget.account.shoppingDay}',
                       style: context.textStyles.textBold
                           .copyWith(color: Colors.white, fontSize: 16),
                     ),

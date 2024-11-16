@@ -28,7 +28,7 @@ class _BasePageState extends State<BasePage> {
       backgroundColor: Colors.white,
       body: _screens.elementAt(currentIndex),
       bottomNavigationBar: Container(
-        height: 89,
+        height: 85,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(35.0),

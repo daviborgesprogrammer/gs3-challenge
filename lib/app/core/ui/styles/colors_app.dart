@@ -13,6 +13,8 @@ class ColorsApp {
 
   Color get divider => const Color(0XFFE5E5E5);
 
+  Color get grey1 => const Color(0XFFD9D9D9);
+
   Color get bgPrimary => const Color(0XFF3C6AB2);
   Color get bgSecondary => Colors.white;
 }
