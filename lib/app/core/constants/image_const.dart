@@ -14,4 +14,7 @@ sealed class ImageConst {
   static const cartIcon = 'assets/icons/cart.svg';
   static const emptyIcon = 'assets/icons/empty.svg';
   static const home = 'assets/icons/home.svg';
+  static const invoice = 'assets/icons/invoice.svg';
+  static const creditCard = 'assets/icons/credit_card.svg';
+  static const shop = 'assets/icons/shop.svg';
 }

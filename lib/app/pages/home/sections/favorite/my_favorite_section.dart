@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../../../home_controller.dart';
 import 'favorite_head.dart';
 import 'favorite_list.dart';
 
 class MyFavoriteSection extends StatelessWidget {
-  const MyFavoriteSection({super.key});
+  final HomeController controller;
+  const MyFavoriteSection(this.controller, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        FavoriteHead(),
-        FavoriteList(),
+        const FavoriteHead(),
+        FavoriteList(controller),
       ],
     );
   }
