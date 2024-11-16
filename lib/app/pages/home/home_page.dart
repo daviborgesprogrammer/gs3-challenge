@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               AccountSection(controller),
               const DividerSection(),
-              const MyFavoriteSection(),
+              MyFavoriteSection(controller),
               const DividerSection(),
               Expanded(child: LatestReleasesSection(controller)),
             ],

@@ -13,9 +13,9 @@ class LatestReleaseList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListenableBuilder(
       listenable:
-          Listenable.merge([controller.stateRelease, controller.releaseList]),
+          Listenable.merge([controller.stateAccount, controller.releaseList]),
       builder: (context, _) {
-        return controller.stateRelease.value == ReleaseState.loading
+        return controller.stateAccount.value == AccountState.loading
             ? const ShimmerList()
             : ListView(
                 children: controller.releaseList.value.entries.map(

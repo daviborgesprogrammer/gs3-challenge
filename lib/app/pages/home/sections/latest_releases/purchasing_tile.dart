@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/constants/image_const.dart';
 import '../../../../core/extensions/formatter_extensions.dart';
 import '../../../../core/ui/styles/text_styles.dart';
 import '../../../../models/releases.dart';
