@@ -21,20 +21,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // controller.state.addListener(_handleStateChange);
       await controller.fetchData();
     });
     super.initState();
   }
-
-  // void _handleStateChange() async {
-  //   switch (controller.state.value) {
-  //     case HomeState.initial:
-  //     case HomeState.loading:
-  //     case HomeState.loaded:
-  //     case HomeState.error:
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +34,6 @@ class _HomePageState extends State<HomePage> {
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBarHome(context),
-          drawer: const Drawer(),
           body: Column(
             children: [
               AccountSection(controller),

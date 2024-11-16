@@ -10,6 +10,7 @@ class AppBarHome extends AppBar {
       : super(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          leading: const Icon(Icons.menu),
           title: RichText(
             text: TextSpan(
               text: 'Olá, ',

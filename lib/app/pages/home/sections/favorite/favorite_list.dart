@@ -15,11 +15,11 @@ class FavoriteList extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20.0),
       height: 85,
       child: ListenableBuilder(
-        listenable:
-            Listenable.merge([controller.state, controller.favoriteList]),
+        listenable: Listenable.merge(
+          [controller.stateAccount, controller.favoriteList],
+        ),
         builder: (context, _) {
-          return controller.stateAccount.value == AccountState.loading &&
-                  controller.favoriteList.value.isEmpty
+          return controller.stateAccount.value == AccountState.loading
               ? const ShimmerFavorite()
               : ListView.builder(
                   scrollDirection: Axis.horizontal,

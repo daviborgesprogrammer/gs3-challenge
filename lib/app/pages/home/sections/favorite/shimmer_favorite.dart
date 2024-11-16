@@ -7,21 +7,21 @@ class ShimmerFavorite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 140,
       child: Shimmer.fromColors(
         baseColor: Colors.grey[300]!,
         highlightColor: Colors.grey[100]!,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 2, // Adjust the count based on your needs
+          itemCount: 5,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Container(
-                height: 20,
-                width: 200,
+            return Container(
+              margin: const EdgeInsets.symmetric(horizontal: 15),
+              width: 85,
+              decoration: BoxDecoration(
                 color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
               ),
+              // padding: const EdgeInsets.symmetric(horizontal: 8.0),
             );
           },
         ),
