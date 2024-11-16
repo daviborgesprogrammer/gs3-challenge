@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../models/account.dart';
-import '../models/releases.dart';
 import '../service/account/account_service.dart';
 import '../service/releases/releases_service.dart';
 
@@ -29,7 +28,8 @@ class HomeController {
       ValueNotifier(ReleaseState.initial);
 
   ValueNotifier<List<Account>> accountList = ValueNotifier<List<Account>>([]);
-  ValueNotifier<List<Release>> releaseList = ValueNotifier<List<Release>>([]);
+  ValueNotifier<Map<String, dynamic>> releaseList =
+      ValueNotifier<Map<String, dynamic>>({});
 
   Future<void> fetchData() async {
     await fetchAccounts();

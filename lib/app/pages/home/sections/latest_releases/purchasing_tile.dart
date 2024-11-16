@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/constants/image_const.dart';
+import '../../../../core/extensions/formatter_extensions.dart';
 import '../../../../core/ui/styles/text_styles.dart';
+import '../../../../models/releases.dart';
 
 class PurchasingTile extends StatelessWidget {
-  const PurchasingTile({super.key});
+  final Release release;
+  const PurchasingTile(this.release, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class PurchasingTile extends StatelessWidget {
                   height: 24,
                   width: 24,
                   child: SvgPicture.asset(
-                    ImageConst.mobileIcon,
+                    release.imageDesc,
                     fit: BoxFit.none,
                   ),
                 ),
@@ -40,13 +43,14 @@ class PurchasingTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Apple',
+                    release.desc ?? '',
                     style: context.textStyles.textBold
                         .copyWith(fontSize: 12, color: const Color(0XFF212121)),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '05/09 às 22:35',
+                    release.dateTimeRelease,
+                    // '05/09 às 22:35',
                     style: context.textStyles.textRegular
                         .copyWith(fontSize: 10, color: const Color(0XFF69696B)),
                   ),
@@ -56,15 +60,16 @@ class PurchasingTile extends StatelessWidget {
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                r'R$545,99',
+                release.amount?.currencyPTBR ?? '',
                 style: context.textStyles.textBold
                     .copyWith(fontSize: 12, color: const Color(0XFF212121)),
               ),
               const SizedBox(height: 4),
               Text(
-                'em 12x',
+                release.installment! > 0 ? 'em ${release.installment}x' : '',
                 style: context.textStyles.textRegular
                     .copyWith(fontSize: 10, color: const Color(0XFF69696B)),
               ),

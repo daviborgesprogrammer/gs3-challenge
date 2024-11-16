@@ -1,3 +1,7 @@
+import 'package:intl/intl.dart';
+
+import '../core/constants/image_const.dart';
+
 class Release {
   int? id;
   int? accountId;
@@ -25,5 +29,19 @@ class Release {
     amount = json['amount'];
     installment = json['installment'];
     type = json['type'];
+  }
+
+  String get dateTimeRelease {
+    final DateTime dateTime = DateTime.parse(releaseDate!);
+    return DateFormat("dd/MM 'às' HH:mm").format(dateTime);
+  }
+
+  String get imageDesc {
+    return switch (type) {
+      1 => ImageConst.mobileIcon,
+      2 => ImageConst.carIcon,
+      3 => ImageConst.cartIcon,
+      _ => ImageConst.emptyIcon,
+    };
   }
 }

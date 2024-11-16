@@ -21,20 +21,20 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      controller.state.addListener(_handleStateChange);
-      await controller.fetchAccounts();
+      // controller.state.addListener(_handleStateChange);
+      await controller.fetchData();
     });
     super.initState();
   }
 
-  void _handleStateChange() async {
-    switch (controller.state.value) {
-      case HomeState.initial:
-      case HomeState.loading:
-      case HomeState.loaded:
-      case HomeState.error:
-    }
-  }
+  // void _handleStateChange() async {
+  //   switch (controller.state.value) {
+  //     case HomeState.initial:
+  //     case HomeState.loading:
+  //     case HomeState.loaded:
+  //     case HomeState.error:
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
               const DividerSection(),
               const MyFavoriteSection(),
               const DividerSection(),
-              const Expanded(child: LatestReleasesSection()),
+              Expanded(child: LatestReleasesSection(controller)),
             ],
           ),
         ),
