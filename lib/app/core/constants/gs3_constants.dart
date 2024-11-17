@@ -1,3 +1,9 @@
+sealed class Gs3Constants {
+  static const accountKey = 'accountKey';
+  static const favoriteKey = 'favoriteKey';
+  static const releasesKey = 'releasesKey';
+}
+
 sealed class ImageConst {
   static const chat = 'assets/icons/chat.svg';
   static const notification = 'assets/icons/notification.svg';

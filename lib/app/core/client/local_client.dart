@@ -26,9 +26,9 @@ class LocalClient {
   }
 
   Future<List> getByProperty(String property) async {
-    final data = await LocalClient.i.data;
-    if (data != null) {
-      final dataDecoded = await json.decode(data);
+    final dt = await LocalClient.i.data;
+    if (dt != null) {
+      final dataDecoded = await json.decode(dt);
       if (dataDecoded.containsKey(property)) {
         return dataDecoded[property];
       }

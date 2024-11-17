@@ -39,8 +39,8 @@ class HomeController {
     if (accountList.value.isNotEmpty) {
       stateAccount.value = AccountState.loading;
       final Account(:id) = accountList.value.first;
-      await fetchReleases(id!);
-      await fetchFavorite(id);
+      await fetchFavorite(id!);
+      await fetchReleases(id);
       stateAccount.value = AccountState.loaded;
     }
   }

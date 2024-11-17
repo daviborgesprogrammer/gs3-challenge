@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../constants/image_const.dart';
+import '../../constants/gs3_constants.dart';
 
 class AppIcons extends StatelessWidget {
   final double? height;
