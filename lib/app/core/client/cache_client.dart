@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../constants/gs3_constants.dart';
+
 class CacheClient {
   static CacheClient? _instance;
 
@@ -9,11 +11,20 @@ class CacheClient {
 
   static CacheClient get i => _instance ??= CacheClient._();
 
-  SharedPreferences? _cache;
+  SharedPreferencesWithCache? _cache;
 
-  Future<SharedPreferences?> get cache async {
+  Future<SharedPreferencesWithCache?> get cache async {
     if (_cache != null) return _cache!;
-    _cache = await SharedPreferences.getInstance();
+    // _cache = await SharedPreferences.getInstance();
+    _cache = await SharedPreferencesWithCache.create(
+      cacheOptions: const SharedPreferencesWithCacheOptions(
+        allowList: {
+          Gs3Constants.accountKey,
+          Gs3Constants.favoriteKey,
+          Gs3Constants.releasesKey,
+        },
+      ),
+    );
     return _cache;
   }
 
