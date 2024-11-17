@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/image_const.dart';
+import '../../../../core/constants/gs3_constants.dart';
 import '../../../home_controller.dart';
 import 'favorite_tile.dart';
 import 'shimmer_favorite.dart';
@@ -15,11 +15,11 @@ class FavoriteList extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20.0),
       height: 85,
       child: ListenableBuilder(
-        listenable:
-            Listenable.merge([controller.state, controller.favoriteList]),
+        listenable: Listenable.merge(
+          [controller.stateAccount, controller.favoriteList],
+        ),
         builder: (context, _) {
-          return controller.stateAccount.value == AccountState.loading &&
-                  controller.favoriteList.value.isEmpty
+          return controller.stateAccount.value == AccountState.loading
               ? const ShimmerFavorite()
               : ListView.builder(
                   scrollDirection: Axis.horizontal,

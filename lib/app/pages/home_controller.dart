@@ -39,8 +39,8 @@ class HomeController {
     if (accountList.value.isNotEmpty) {
       stateAccount.value = AccountState.loading;
       final Account(:id) = accountList.value.first;
-      fetchReleases(id!);
-      fetchFavorite(id);
+      await fetchFavorite(id!);
+      await fetchReleases(id);
       stateAccount.value = AccountState.loaded;
     }
   }
@@ -48,6 +48,7 @@ class HomeController {
   Future<void> fetchAccounts() async {
     state.value = HomeState.loading;
     accountList.value = await _accountService.getAll();
+    await Future.delayed(const Duration(milliseconds: 500));
     state.value = HomeState.loaded;
   }
 
@@ -61,8 +62,9 @@ class HomeController {
 
   Future<void> changeAccount(int id) async {
     stateAccount.value = AccountState.loading;
-    fetchFavorite(id);
-    fetchReleases(id);
+    await fetchFavorite(id);
+    await fetchReleases(id);
+    await Future.delayed(const Duration(milliseconds: 500));
     stateAccount.value = AccountState.loaded;
   }
 }

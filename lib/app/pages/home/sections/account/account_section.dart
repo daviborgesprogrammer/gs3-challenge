@@ -18,8 +18,7 @@ class AccountSection extends StatelessWidget {
         listenable:
             Listenable.merge([controller.state, controller.accountList]),
         builder: (context, _) {
-          return controller.state.value == HomeState.loading &&
-                  controller.accountList.value.isEmpty
+          return controller.state.value == HomeState.loading
               ? const ShimmerCard()
               : CarouselSlider.builder(
                   options: CarouselOptions(

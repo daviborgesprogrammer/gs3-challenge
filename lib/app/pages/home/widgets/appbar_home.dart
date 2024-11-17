@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../core/constants/image_const.dart';
+import '../../../core/constants/gs3_constants.dart';
 import '../../../core/ui/styles/colors_app.dart';
 import '../../../core/ui/styles/text_styles.dart';
 
@@ -10,6 +10,7 @@ class AppBarHome extends AppBar {
       : super(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          leading: const Icon(Icons.menu),
           title: RichText(
             text: TextSpan(
               text: 'Olá, ',

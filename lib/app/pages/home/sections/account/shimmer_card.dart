@@ -11,19 +11,25 @@ class ShimmerCard extends StatelessWidget {
       child: Shimmer.fromColors(
         baseColor: Colors.grey[300]!,
         highlightColor: Colors.grey[100]!,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 2, // Adjust the count based on your needs
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Container(
-                height: 20,
-                width: 200,
-                color: Colors.white,
-              ),
-            );
-          },
+        child: Padding(
+          padding: const EdgeInsets.only(left: 2),
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 2, // Adjust the count based on your needs
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Container(
+                  height: 140,
+                  width: 301,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

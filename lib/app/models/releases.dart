@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-import '../core/constants/image_const.dart';
+import '../core/constants/gs3_constants.dart';
 
 class Release {
   int? id;
