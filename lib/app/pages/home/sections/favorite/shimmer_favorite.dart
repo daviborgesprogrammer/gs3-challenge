@@ -21,7 +21,6 @@ class ShimmerFavorite extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
               ),
-              // padding: const EdgeInsets.symmetric(horizontal: 8.0),
             );
           },
         ),

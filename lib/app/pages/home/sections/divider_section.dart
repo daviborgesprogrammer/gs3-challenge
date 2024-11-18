@@ -10,7 +10,6 @@ class DividerSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Divider(
-        // color: Colors.red,
         thickness: 1.0,
         height: 1.0,
         color: ColorsApp.i.divider,

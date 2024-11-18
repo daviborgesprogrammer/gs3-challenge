@@ -45,7 +45,6 @@ class _BasePageState extends State<BasePage> {
             topRight: Radius.circular(35.0),
           ),
           child: BottomNavigationBar(
-            // onTap: onTabTapped,
             currentIndex: currentIndex,
             backgroundColor: Colors.white,
             elevation: 4,
@@ -95,10 +94,4 @@ class _BasePageState extends State<BasePage> {
       ),
     );
   }
-
-  // void onTabTapped(int index) {
-  //   setState(() {
-  //     currentIndex = index;
-  //   });
-  // }
 }

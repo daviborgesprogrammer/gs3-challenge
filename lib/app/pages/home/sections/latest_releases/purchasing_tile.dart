@@ -49,7 +49,6 @@ class PurchasingTile extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     release.dateTimeRelease,
-                    // '05/09 às 22:35',
                     style: context.textStyles.textRegular
                         .copyWith(fontSize: 10, color: const Color(0XFF69696B)),
                   ),
