@@ -15,7 +15,6 @@ class CacheClient {
 
   Future<SharedPreferencesWithCache?> get cache async {
     if (_cache != null) return _cache!;
-    // _cache = await SharedPreferences.getInstance();
     _cache = await SharedPreferencesWithCache.create(
       cacheOptions: const SharedPreferencesWithCacheOptions(
         allowList: {
