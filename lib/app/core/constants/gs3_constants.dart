@@ -5,6 +5,7 @@ sealed class Gs3Constants {
 }
 
 sealed class ImageConst {
+  static const packSms = 'assets/icons/mail.svg';
   static const chat = 'assets/icons/chat.svg';
   static const notification = 'assets/icons/notification.svg';
   static const eye = 'assets/icons/eye.svg';
@@ -12,7 +13,6 @@ sealed class ImageConst {
   static const virtualCard = 'assets/icons/virtualCard.svg';
   static const additionalCard = 'assets/icons/additionalCard.svg';
   static const insurance = 'assets/icons/insurance.svg';
-  static const packSms = 'assets/icons/mail.svg';
   static const vipRoom = 'assets/icons/vipRoom.svg';
   static const arrowForward = 'assets/icons/arrow_forward.svg';
   static const mobileIcon = 'assets/icons/mobile.svg';

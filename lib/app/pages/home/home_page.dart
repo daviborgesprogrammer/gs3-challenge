@@ -21,9 +21,33 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      controller.state.addListener(_handleStateChange);
       await controller.fetchData();
     });
     super.initState();
+  }
+
+  void _handleStateChange() async {
+    switch (controller.state.value) {
+      case HomeState.initial:
+        break;
+      case HomeState.loading:
+      case HomeState.loaded:
+        break;
+      case HomeState.error:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(controller.errorMessage ?? 'Erro desconhecido'),
+            action: SnackBarAction(
+              label: 'Desfazer',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            ),
+          ),
+        );
+        break;
+    }
   }
 
   @override

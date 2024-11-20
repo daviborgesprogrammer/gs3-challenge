@@ -31,8 +31,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/icons/
     - assets/data/
+    - assets/icons/
 
   fonts:
     - family: Mulish

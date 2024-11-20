@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -34,6 +36,8 @@ class HomeController {
   ValueNotifier<Map<String, dynamic>> releaseList =
       ValueNotifier<Map<String, dynamic>>({});
 
+  String? errorMessage;
+
   Future<void> fetchData() async {
     await fetchAccounts();
     if (accountList.value.isNotEmpty) {
@@ -46,10 +50,16 @@ class HomeController {
   }
 
   Future<void> fetchAccounts() async {
-    state.value = HomeState.loading;
-    accountList.value = await _accountService.getAll();
-    await Future.delayed(const Duration(milliseconds: 500));
-    state.value = HomeState.loaded;
+    try {
+      state.value = HomeState.loading;
+      accountList.value = await _accountService.getAll();
+      await Future.delayed(const Duration(milliseconds: 500));
+      state.value = HomeState.loaded;
+    } catch (e, s) {
+      errorMessage = 'Erro ao buscar contas';
+      log('Erro ao buscar contas', error: e, stackTrace: s);
+      state.value = HomeState.error;
+    }
   }
 
   Future<void> fetchReleases(int id) async {
@@ -61,10 +71,16 @@ class HomeController {
   }
 
   Future<void> changeAccount(int id) async {
-    stateAccount.value = AccountState.loading;
-    await fetchFavorite(id);
-    await fetchReleases(id);
-    await Future.delayed(const Duration(milliseconds: 500));
-    stateAccount.value = AccountState.loaded;
+    try {
+      stateAccount.value = AccountState.loading;
+      await fetchFavorite(id);
+      await fetchReleases(id);
+      await Future.delayed(const Duration(milliseconds: 500));
+      stateAccount.value = AccountState.loaded;
+    } catch (e, s) {
+      log('Erro ao buscar favoritos/lançamentos', error: e, stackTrace: s);
+      errorMessage = 'Erro ao buscar favoritos/lançamentos';
+      state.value = HomeState.error;
+    }
   }
 }
